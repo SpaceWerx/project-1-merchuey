@@ -5,6 +5,9 @@ public class Users {
 	private String username;
 	private String password; 
 	private Roles role;
+	public Users(String f_name, String l_name, int roleId) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
