@@ -17,7 +17,7 @@ public class Menu {
 			
 			boolean displayMenu = true; //we're going to use this to toggle whether the menu continues after user input
 			Scanner scan = new Scanner(System.in); //Scanner object to parse (take) user input
-			
+			//what is the meaning of scan is never closed?
 			//give the user a pretty greeting :)
 			System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
 			System.out.println("Welcome to Robin Hood Reimbursement Services");
@@ -169,4 +169,4 @@ public class Menu {
 		}	
 	}
 
-}
+
