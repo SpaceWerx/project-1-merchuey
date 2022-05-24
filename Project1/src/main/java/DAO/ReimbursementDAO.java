@@ -97,7 +97,7 @@ public class ReimbursementDAO {
 			
 			preparedStatement.setInt(1, unprocessedReimbursement.getResolver());
 			preparedStatement.setObject(2,unprocessedReimbursement.getStatus().name());
-			preparedStatement.setInt(3,  unprocessedReimbursement.getId());
+			preparedStatement.setInt(3,  unprocessedReimbursement.getID());
 			
 			
 			preparedStatement.executeUpdate();
