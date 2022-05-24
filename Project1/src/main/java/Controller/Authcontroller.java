@@ -14,7 +14,7 @@ public class Authcontroller {
 		ObjectMapper mapper = new ObjectMapper ();
 		Users users = mapper.readValue(input, Users.class);
 		
-		if(id == 0) {
+		if(Id == 0) {
 			
 			ctx.status(HttpCode.INTERNAL_SERVER_ERROR);
 			ctx.result("registration unsuccessfull");
@@ -28,7 +28,7 @@ public class Authcontroller {
 		e.printStackTrace();
 		
 	}
-}
+
 
 //////////////////////////////////////////////////////////////////////////
 public void handleLogin(context ctx) {
@@ -39,7 +39,7 @@ public void handleLogin(context ctx) {
 		
 		ctx.status(HttpCode.BAD_REQUEST);
 		ctx.result("invalid credentials");
-	}else }
+	} else }
 Users users AuthService.login(username,password);
 
 if(user != null) {

@@ -14,7 +14,7 @@ public class UserController {
 
 	public Handler getEmployeesHandler = (ctx) ->{
 		
-	 List<User> allUsers = us.getAllUsers();
+	 List<Users> allUsers = us.getAllUsers();
 	
 	 Gson gson = new Gson();
 	
@@ -31,7 +31,7 @@ public class UserController {
 		
 		Gson gson = new Gson();
 		
-		User employee = gson.fromJson(body, User.class);
+		Users employee = gson.fromJson(body, Users.class);
 		
 		us.addUser(employee);
 		

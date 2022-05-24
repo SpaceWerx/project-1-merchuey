@@ -1,21 +1,21 @@
 package Service;
 
-import models.Status;		
-import models.User;
-import repositories.ReimbursementDAO;
-import repositories.UserDAO;
+import Models.Status;		
+import Models.Users;
+import DAO.ReimbursementDAO;
+import DAO.UserDAO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import mockdata.MockReimbursementData;
-import models.Reimbursement;
-import models.Role;
+import Mockdata.MockReimbursementData;
+import Models.Reimbursement;
+import Models.Roles;
 
 public class Reimservices {
 
 			public ReimbursementDAO reimbursementDAO = new ReimbursementDAO();
-			public UserService rService = new UserService();
+			public User_Services rService = new User_Services();
 			public static List<MockReimbursementData> mockData = new ArrayList<>();
 			public static ArrayList<Reimbursement> reimbursements = new ArrayList<>();	
 			public static void clearData() {	
@@ -24,9 +24,9 @@ public class Reimservices {
 
 	public Reimbursement update(Reimbursement unprocessedReimbursement, int resolverId, Status updatedStatus) {	
 
-			User manager = rService.getUserById(resolverId);
+			Users manager = rService.getUserById(resolverId);
 			
-			if(manager.getRole() != Role.Manager) {
+			if(manager.getRole() != Roles.Manager) {
 				throw new RuntimeException("There was an error processing this reimbursement, please try again.");
 			}else {
 				
@@ -73,9 +73,9 @@ public class Reimservices {
 			
 
 		
-			User employee = rService.getUserById(reimbursementToBeSubmitted.getAuthor());
+			Users employee = rService.getUserById(reimbursementToBeSubmitted.getAuthor());
 		
-			if(employee.getRole() != Role.Employee) {
+			if(employee.getRole() != Roles.Employee) {
 				
 				throw new IllegalArgumentException("Managers cannot submit reimbursement requests.");
 			} else {
@@ -101,9 +101,9 @@ public class Reimservices {
 	public Reimbursement updateManager(Reimbursement unprocessedReimbursement, int resolverId, Status updatedStatus) {
 		
 			getUserService();//DELETE IF NECESSARY
-			User manager = rService.getUserById(resolverId);
+			Users manager = rService.getUserById(resolverId);
 			
-			if(manager.getRole() != Role.Manager) {
+			if(manager.getRole() != Roles.Manager) {
 				
 				throw new IllegalArgumentException("An Employee cannot process reimbursement requests.");
 			}else {
@@ -123,12 +123,12 @@ public class Reimservices {
 	}
 
 
-	public UserService getUserService() {
+	public User_Services getUserService() {
 		return rService;
 	}
 
 
-	public void setUserService(UserService userService) {
+	public void setUserService(User_Services userService) {
 		this.rService = userService;
 	}
 		

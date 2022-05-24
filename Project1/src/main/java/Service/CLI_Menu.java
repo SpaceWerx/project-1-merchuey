@@ -5,6 +5,7 @@ import java.util.Scanner;
 import Models.Status;
 import Models.Users;
 import Models.Reimbursement;
+import Models.Reimtype;
 import Models.Roles;
 
 public class CLI_Menu {
@@ -142,9 +143,9 @@ public void displayEmployeeMenu(Users employee) {
 	while (employeePortal) {
 		
 		System.out.println("please enter your choise");
-		System.out.println("1.-> view previous requests");
-		System.out.println("2. -> submit a reimbursment");
-		System.out.println("0. -> return to main menu");
+		System.out.println("1 -> view previous requests");
+		System.out.println("2 -> submit a reimbursment");
+		System.out.println("0 -> return to main menu");
 		
 		int firstChoice = promptSelection(1,2,0);
 		
@@ -159,7 +160,7 @@ public void displayEmployeeMenu(Users employee) {
 		System.out.println("returning to main menu");
 		employeePortal = false;
 		break;
-	default;
+	default:
 	System.out.println("invalid");
 	System.out.println();
 	System.out.println();
@@ -219,16 +220,16 @@ public void submitReimbursement(Users employee) {
 	
 	switch (typeDecision) {
 	case 1;
-		reimbursementToBeSubmitted.setType(reimtype.lodging);
+		reimbursementToBeSubmitted.setType(Reimtype.lodging);
 		break;
 	case 2;
-		reimbursementToBeSubmitted.setType(reimtype.travel);
+		reimbursementToBeSubmitted.setType(Reimtype.travel);
 		break;
 	case 3;
-		reimbursementToBeSubmitted.setType(reimtype.food);
+		reimbursementToBeSubmitted.setType(Reimtype.food);
 		break;
 	case 4;
-		reimbursementToBeSubmitted.setType(reimtype.other);
+		reimbursementToBeSubmitted.setType(Reimtype.other);
 		break;
 	}
 	
@@ -281,7 +282,7 @@ public void displayPendingReimbursements() {
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-public void processReimbursement(User manager) {
+public void processReimbursement(Users manager) {
 	boolean processPortal = true;
 	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	System.out.println("welcome to the processing portal");

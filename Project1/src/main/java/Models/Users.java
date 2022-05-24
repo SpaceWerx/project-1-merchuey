@@ -4,7 +4,7 @@ public class Users {
 	private int Id;
 	private String user;
 	private String password;
-	private Roles role;
+	private Roles roles;
 	
 	public Users() {
 		super();
@@ -17,11 +17,11 @@ public class Users {
 		this.password = password;
 		this.role = role;
 	}
-	public User( String users, String password, Role role ) {
+	public Users( String user, String password, Roles role) {
 		super();
-		this.Users = users;
+		this.User = user;
 		this.password = password;
-		this.Roles = roles;
+		this.Role = role;
 	}
 	public int getId() {
 		return Id;
@@ -32,7 +32,7 @@ public class Users {
 	}
 	public Roles getRole() {
 		
-		return roles;
+		return role;
 	}
 	public String getUsername() {
 		return users;

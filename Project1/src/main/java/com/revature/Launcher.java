@@ -1,5 +1,6 @@
 package com.revature;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import Controller.Authcontroller;
 import Controller.ReimbursementController;
@@ -12,8 +13,8 @@ import Utilities.ConnectionFactoryUtility;
 
 public class Launcher {
 	public static void main(String[] args) {
-		AuthController authController = new AuthController();
-		UserController userController = new UserController);
+		Authcontroller authController = new Authcontroller();
+		UserController userController = new UserController();
 		ReimbursementController reimbursementcontroller = new ReimbursementController();
 		
 		try (Connection conn = ConnectionFactoryUtility.getConnection()) {

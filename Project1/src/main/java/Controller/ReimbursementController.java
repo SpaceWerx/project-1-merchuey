@@ -11,16 +11,18 @@ import Service.User_Services;
 public class ReimbursementController {
 	
 	ObjectMapper objectMapper = new ObjectMapper();
-	ReimbursementService reimbursementService = new ReimbursementService();
-	UserService userService = new UserService();
+	Reimservices reimbursementService = new Reimservices();
+	User_Services user_Service = new User_Services();
+///////////////////////////////////////////////////////////////////////////////////////////
+	
 	public void handleSubmit(Context ctx) {
 	
 		try {
 			String input = ctx.body();
 			
-			Reimbursement reimbursement = objectMapper.readValue(input, Reimbursement.class);
+			Reimbursement reimbursement = ObjectMapper.readValue(input, Reimbursement.class);
 			
-			int id = reimbursementService.submitReimbursement(reimbursement);
+			int id = Reimservices.submitReimbursement(reimbursement);
 			
 			if(id != 0) {
 				
@@ -79,9 +81,9 @@ public class ReimbursementController {
 	
 	} else {
 		ctx.status(HttpCode.FORBIDDEN);
-		ctx.result("Missing Current User Header with ID");
-	} 
-}
+		ctx.result("Missing Current User Header with ID"); 
+	}
+		}
 //////////////////////////////////////////////////////////////////////////////////////////////////		
 public void handleGetReimbursements (Context ctx) {
 	if(ctx.queryParam("author") != null) {
@@ -194,4 +196,4 @@ public void handleGetReimbursementsByAuthor(Context ctx) {
 }
 
 
-}
+
