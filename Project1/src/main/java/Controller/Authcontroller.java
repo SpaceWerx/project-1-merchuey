@@ -27,7 +27,8 @@ public class Authcontroller {
 		}
 		e.printStackTrace(); {
 		}
-	} 
+	}
+}
 
 
 
@@ -38,6 +39,7 @@ public class Authcontroller {
 
 
 //////////////////////////////////////////////////////////////////////////
+
 public void handleLogin(context.ctx) {
 	String username = ctx.fromParam("username");
 	String password = ctx.fromParam("password");
@@ -62,7 +64,7 @@ if(user != null) {
 	} else {
 	ctx.status(HttpCode.BAD_REQUEST);
 	ctx.result("invalid credentials");
-}
+	}
 }
 	}
 }

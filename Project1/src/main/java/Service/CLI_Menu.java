@@ -291,6 +291,7 @@ public void displayPendingReimbursements() {
 		System.out.println("returing to previous menu");
 	}
 	
+	Reimbursement[] resolvedReimbursements;
 	for (Reimbursement r : resolvedReimbursements) {
 		System.out.println(r);
 	}
@@ -298,6 +299,7 @@ public void displayPendingReimbursements() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public void processReimbursement(Users manager) {
+	boolean proecssPortal;
 	boolean processPortal = true;
 	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	System.out.println("welcome to the processing portal");
@@ -318,11 +320,12 @@ public void processReimbursement(Users manager) {
 		int[] ids = new int[Reimbursement.size()]; {
 		for (int i = 0;i<Reimbursement.size(); i++) {
 			Reimbursement r = Reimbursement.get(i);
-			Users author = UserService.getUserById(r.getAuthor());
+			Users author = User_Services.getUserbyId(r.getAuthor());
 			System.out.println(r.getID() + "->" + author.getUsername() + " $ " + r.getAmount());
 			ids[i] = r.getID();	
 		}
 		}
+		
 	System.out.println("please enter the ID of the reimbursement you would like to process");
 	
 	int selection = promptSelection(ids);
@@ -337,7 +340,7 @@ public void processReimbursement(Users manager) {
 	
 	int decision = promptSelection(1,2);
 	Status status = (decision == 1)? Status.Approved : Status.Denied;
-	rService.update(reimbursement.ToBeProcessed,manager.getID(). status);
+	rService.update(reimbursement.ToBeProcessed,manager.getID().status);
 	
 	System.out.println("would you like to process another reimbursement");
 	System.out.println("1 -> yes");
@@ -348,8 +351,6 @@ public void processReimbursement(Users manager) {
 	if (lastChoice == 2) {
 		processPortal = false;
 	}
-	
-	
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -367,7 +368,7 @@ public void displayLoginMenu() {
 		 String username = scan.nextLine();
 		System.out.println("enter password");
 		String password = scan.nextLine();
-		if(au.login(username, password)! = null) {
+		if(au.login(username, password)!= null) {
 			accountFound = true;
 			displayMenu();
 			break;
