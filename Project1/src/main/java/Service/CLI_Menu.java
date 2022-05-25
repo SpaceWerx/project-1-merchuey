@@ -119,7 +119,7 @@ public void handlePortal(Roles role) {
 			if (userChoice == 0) {
 				return;
 			}
-			Users employee = userservices.getUserById(userChoice);
+			Users employee = userservices.getUserByID(userChoice);
 			
 			if (role == Roles.Manager) {
 				System.out.println("opening manager portal for " + employee.getUsername());
@@ -379,5 +379,5 @@ public void displayMenu() {
 	au.register(userToBeRegistered);
 	displayLoginMenu
 }
-
 }
+} 

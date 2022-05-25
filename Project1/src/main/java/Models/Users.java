@@ -15,13 +15,13 @@ public class Users {
 		this.Id = id;
 		this.user = user;
 		this.password = password;
-		this.role = role;
+		this.roles = role;
 	}
 	public Users( String user, String password, Roles role) {
 		super();
-		this.User = user;
+		this.user = user;
 		this.password = password;
-		this.Role = role;
+		this.roles = role;
 	}
 	public int getId() {
 		return Id;
@@ -32,17 +32,17 @@ public class Users {
 	}
 	public Roles getRole() {
 		
-		return role;
+		return roles;
 	}
 	public String getUsername() {
-		return users;
+		return user;
 	}
 	
 	public String getPassword() {
 		return password;
 	}
 	public void setRole(Roles role) {
-		this.role = role;
+		this.roles = role;
 	}
 	public void setPassword(String password) {
 		this.password = password;

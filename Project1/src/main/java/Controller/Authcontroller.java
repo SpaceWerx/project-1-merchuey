@@ -2,9 +2,9 @@ package Controller;
 
 import java.util.Objects;
 import io.javalin.http.Context;
-import io.javalin.httpCode;
-import models.Users;
-import services.AuthService;
+import io.javalin.http.HttpCode;
+import Models.Users;
+import Service.AuthService;
 
 public class Authcontroller {
 
@@ -28,6 +28,9 @@ public class Authcontroller {
 		e.printStackTrace();
 		
 	}
+} 
+} 
+
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -58,4 +61,5 @@ if(user != null) {
 }
 }	
 	}
+
 }

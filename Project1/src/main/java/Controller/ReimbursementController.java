@@ -20,9 +20,9 @@ public class ReimbursementController {
 		try {
 			String input = ctx.body();
 			
-			Reimbursement reimbursement = ObjectMapper.readValue(input, Reimbursement.class);
+			Reimbursement reimbursement = objectMapper.readValue(input, Reimbursement.class);
 			
-			int id = Reimservices.submitReimbursement(reimbursement);
+			int id = reimbursementService.submitReimbursement(reimbursement);
 			
 			if(id != 0) {
 				
@@ -81,8 +81,10 @@ public class ReimbursementController {
 	
 	} else {
 		ctx.status(HttpCode.FORBIDDEN);
-		ctx.result("Missing Current User Header with ID"); 
-	}
+		ctx.result("Missing Current User Header with ID"); }
+			
+		} }	
+	
 		}
 //////////////////////////////////////////////////////////////////////////////////////////////////		
 public void handleGetReimbursements (Context ctx) {
@@ -155,7 +157,7 @@ public void handleGetReimbursementsByAuthor(Context ctx) {
 		if(idParam != null) {
 			int id = Integer.parseInt(idParam);
 			
-			if(userService.checkUserExistsById(id)) {
+			if(user_Service.checkUserExistsById(id)) {
 				ctx.status(HttpCode.OK);
 				
 				ctx.json(reimbursementService.getReimbursementsByAuthor(id));

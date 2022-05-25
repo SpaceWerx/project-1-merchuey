@@ -6,9 +6,6 @@ import Controller.Authcontroller;
 import Controller.ReimbursementController;
 import Controller.UserController;
 import io.javalin.Javalin;
-import io.javalin.core.JavalinConfig;
-import Models.Users;
-import Service.CLI_Menu;
 import Utilities.ConnectionFactoryUtility;
 
 public class Launcher {
@@ -30,9 +27,9 @@ public class Launcher {
 				}
 		).start(3000);
 		
-		app.get("/employee", UserController.getEmployeesHandler);
+		app.get("/employee", userController.getEmployeesHandler);
 		
-		app.post("/employee", UserController.insertEmployeesHandler);
+		app.post("/employee", userController.insertEmployeesHandler);
 	}
 
 }

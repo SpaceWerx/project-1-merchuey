@@ -16,7 +16,6 @@ public class Reimservices {
 
 			public ReimbursementDAO reimbursementDAO = new ReimbursementDAO();
 			public User_Services rService = new User_Services();
-			public static List<MockReimbursementData> mockData = new ArrayList<>();
 			public static ArrayList<Reimbursement> reimbursements = new ArrayList<>();	
 			public static void clearData() {	
 				reimbursements.clear();
@@ -24,7 +23,7 @@ public class Reimservices {
 
 	public Reimbursement update(Reimbursement unprocessedReimbursement, int resolverId, Status updatedStatus) {	
 
-			Users manager = rService.getUserById(resolverId);
+			Users manager = rService.getUserbyId(resolverId);
 			
 			if(manager.getRole() != Roles.Manager) {
 				throw new RuntimeException("There was an error processing this reimbursement, please try again.");
@@ -73,7 +72,7 @@ public class Reimservices {
 			
 
 		
-			Users employee = rService.getUserById(reimbursementToBeSubmitted.getAuthor());
+			Users employee = rService.getUserbyId(reimbursementToBeSubmitted.getAuthor());
 		
 			if(employee.getRole() != Roles.Employee) {
 				
@@ -101,7 +100,7 @@ public class Reimservices {
 	public Reimbursement updateManager(Reimbursement unprocessedReimbursement, int resolverId, Status updatedStatus) {
 		
 			getUserService();//DELETE IF NECESSARY
-			Users manager = rService.getUserById(resolverId);
+			Users manager = rService.getUserbyId(resolverId);
 			
 			if(manager.getRole() != Roles.Manager) {
 				
@@ -131,6 +130,13 @@ public class Reimservices {
 	public void setUserService(User_Services userService) {
 		this.rService = userService;
 	}
+
+	public Reimbursement update(Reimbursement reimbursement, int userId, javax.net.ssl.SSLEngineResult.Status valueOf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 		
 		}
+/////////////////////////////////////////////////////////////////////////////////////////
+
 

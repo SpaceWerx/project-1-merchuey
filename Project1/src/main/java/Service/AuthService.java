@@ -4,9 +4,9 @@ import Models.Users;
 import DAO.UserDAO;
 
 public class AuthService {
-	public static int register(Users usersToBeRegistered);
-	if(UserDAO.getByUsername(userToBeRegistered.getUsername())!=null) {
-		throw new NullPoiunterException("username is already taken");
+	public static int register (Users usersToBeRegistered); {
+	if(UserDAO.getByUsername(usersToBeRegistered.getUsername())!=null) {
+		throw new NullPointerException("username is already taken"); };
 	}
 ///////////////////////////////////////////////////////////////////////////////////////
 	
@@ -16,11 +16,11 @@ public class AuthService {
 		try {
 			users = UserDAO.getByUsername(username);
 			
-			if(users!=null && password.equals(users.getPassword))) {
+			if(users!=null && password.equals(users.getPassword())) {
 				
 		System.out.println("succssessful login");
 		return users;
-			} else if (users!= null && !password.equals(users.getPassword)) {
+			} else if (users!= null && !password.equals(users.getPassword())) {
 				
 				System.out.println("wrong password");
 				return null;
@@ -32,7 +32,7 @@ public class AuthService {
 			System.out.println("unsuccessful login");
 			e.printStackTrace();
 	}
-return null 
+return null; 
 	}
 		
 

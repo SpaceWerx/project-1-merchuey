@@ -37,7 +37,7 @@ public void UserExistsById(int id) {
 public List<Users>getUserByRole(Roles roles){
 	List<Users>byRoles = new ArrayList<>();
 	for(Users users : UserDAO.getAllUsers()) {
-		byRole.add(user);
+		byRoles.add(users);
 	}
 }
 return byRole;
