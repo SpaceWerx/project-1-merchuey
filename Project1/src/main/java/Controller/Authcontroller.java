@@ -25,9 +25,12 @@ public class Authcontroller {
 		if(!e.getMessage().isEmpty()) {
 			ctx.result(e.getMessage());
 		}
-		e.printStackTrace();
-		
+		e.printStackTrace(); {
+		}
 	} 
+
+
+
 
 
  
@@ -45,7 +48,7 @@ public void handleLogin(context.ctx) {
 		ctx.result("invalid credentials");
 	} else {
 
-Users users AuthService.login(username,password); {
+Users users; AuthService.login(username,password); {
 
 if(user != null) {
 	ctx.status(HttpCode.ACCEPTED);
@@ -60,6 +63,10 @@ if(user != null) {
 	ctx.status(HttpCode.BAD_REQUEST);
 	ctx.result("invalid credentials");
 }
+}
+	}
+}
+
 
 	
 
