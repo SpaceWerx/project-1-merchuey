@@ -3,24 +3,26 @@ package Service;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import DAO.UserDAO;
 import Models.Roles;
 import Models.Users;
-import java.util.ArrayList;
-import java.util.ArrayList;
+
 
 public class User_Services {
 	static UserDAO userDAO = new UserDAO();
 	
 	
-	public Users getUsersUsername(String username);
-		return userDAO.getByUsername(username);
+	public Users getUsersUsername(String username) {
+		return UserDAO.getByUsername(username);
 }
-////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////
+
 public List<Users>getAllUsers(){
 	return userDAO.getAllUsers();
 	}
+
+
 /////////////////////////////////////////////////////////
 public void UserExistsById(int id) {
 	for(Users users : userDAO.getAllUsers()) {
@@ -30,7 +32,7 @@ public void UserExistsById(int id) {
 		}
 	}
 	
-	System.out.println("this id does not exist");
+	System.out.println("this ID does not exist");
 }
 ////////////////////////////////////////////////////////////////////////
 
@@ -40,8 +42,8 @@ public List<Users>getUserByRole(Roles roles){
 		byRoles.add(users);
 	}
 }
-return byRole;
-}
+return byRoles;
+
 ////////////////////////////////////////////////////////////////////////////
 
 public Users getUserbyId(int id) {

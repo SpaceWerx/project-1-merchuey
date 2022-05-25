@@ -2,7 +2,7 @@ package Models;
 
 public enum Reimtype {
 	Lodging,
-	Tavel,
+	Travel,
 	Food,
 	Other,
 

@@ -57,7 +57,7 @@ public static double parseDoubleInput(String input) {
 	}
 }
 
-public void displayMenu() {
+public void DisplayMenu() {
 	
 	boolean menuOptions = true;
 	
@@ -119,7 +119,7 @@ public void handlePortal(Roles role) {
 			if (userChoice == 0) {
 				return;
 			}
-			Users employee = userservices.getUserByID(userChoice);
+			Users employee = userservices.getUserbyId(userChoice);
 			
 			if (role == Roles.Manager) {
 				System.out.println("opening manager portal for " + employee.getUsername());
@@ -153,10 +153,10 @@ public void displayEmployeeMenu(Users employee) {
 		case 1: 
 			displayPreviousRequests(employee);
 			break;
-		case 2;
-		submitReimbursement(employee):
+		case 2:
+		submitReimbursement(employee);
 			break;
-		case 0;
+		case 0:
 		System.out.println("returning to main menu");
 		employeePortal = false;
 		break;
@@ -168,6 +168,11 @@ public void displayEmployeeMenu(Users employee) {
 		
 	}
 }
+private void displayPreviousRequests(Users employee) {
+	// TODO Auto-generated method stub
+	
+}
+
 //////////////////////////////////////////////////////////////////////////////////////
 public void displayFinanceManagerMenu(Users manager) {
 	boolean managerPortal = true;
@@ -175,7 +180,7 @@ public void displayFinanceManagerMenu(Users manager) {
 	System.out.println("welcome to the manager portal " + manager.getUsername());
 	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	System.out.println();
-	
+
 	while(managerPortal) {
 		System.out.println("please enter the any number");
 		System.out.println("1 -> view all pending reimbursements");
@@ -186,24 +191,34 @@ public void displayFinanceManagerMenu(Users manager) {
 		int firstChoice = promptSelection(1,2,3,0);
 		
 		switch (firstChoice) {
-		case 1;
+		case 1:
 			displayPendingReimbursements();
 			break;
-		case 2;
+		case 2:
 			displayResolvedReimbursments();
 			break;
-		case 3;
+		case 3:
 			processReimbursements();
 			break;
-		case 0;
+		case 0:
 			System.out.println("Returning to main menu");
 			managerPortal = false;
 		break;
 		
 		}
-
-}
 	}
+}
+	
+
+private void processReimbursements() {
+	// TODO Auto-generated method stub
+	
+}
+
+private void displayResolvedReimbursments() {
+	// TODO Auto-generated method stub
+	
+}
 
 /////////////////////////////////////////////////////////////////////////////////////
 public void submitReimbursement(Users employee) {
@@ -219,17 +234,17 @@ public void submitReimbursement(Users employee) {
 	int typeDecision = promptSelection(1,2,3,4);
 	
 	switch (typeDecision) {
-	case 1;
-		reimbursementToBeSubmitted.setType(Reimtype.lodging);
+	case 1:
+		reimbursementToBeSubmitted.setType(Reimtype.Lodging);
 		break;
-	case 2;
-		reimbursementToBeSubmitted.setType(Reimtype.travel);
+	case 2:
+		reimbursementToBeSubmitted.setType(Reimtype.Travel);
 		break;
-	case 3;
-		reimbursementToBeSubmitted.setType(Reimtype.food);
+	case 3:
+		reimbursementToBeSubmitted.setType(Reimtype.Food);
 		break;
-	case 4;
-		reimbursementToBeSubmitted.setType(Reimtype.other);
+	case 4:
+		reimbursementToBeSubmitted.setType(Reimtype.Other);
 		break;
 	}
 	
@@ -269,7 +284,7 @@ rService.submitReimbursement(reimbursementToBeSubmitted);
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public void displayPendingReimbursements() {
-	list<Reimbursement> pendingReimbursements = rService.getPendingReimbursements();
+	List<Reimbursement> pendingReimbursements = rService.getPendingReimbursements();
 	
 	if(pendingReimbursements.isEmpty()) {
 		System.out.println("no pending requests");
@@ -297,15 +312,18 @@ public void processReimbursement(Users manager) {
 			System.out.println("returing to previous menu");
 			return;	
 		}
+	}
+}
 		
-		int[] ids = new int[reimbursements.size()];
-		for (int i = 0;i<reimbursements.size(); i++) {
-			Reimbursement r = reimbursements.get(i);
-			User author = userService.getUserById(r.getAuthor());
-			System.out.println(r.getId() + "->" + author.getUsername() + " $ " + r.getAmount());
-			ids[i] = r.getId();	
+		int[] ids = new int[Reimbursement.size()]; {
+		for (int i = 0;i<Reimbursement.size(); i++) {
+			Reimbursement r = Reimbursement.get(i);
+			Users author = UserService.getUserById(r.getAuthor());
+			System.out.println(r.getID() + "->" + author.getUsername() + " $ " + r.getAmount());
+			ids[i] = r.getID();	
 		}
-	System.our.println("please enter the ID of the reimbursement you would like to process");
+		}
+	System.out.println("please enter the ID of the reimbursement you would like to process");
 	
 	int selection = promptSelection(ids);
 	Reimbursement reimbursementToBeProcessed = rService.getReimbursementById(selection);
@@ -319,7 +337,7 @@ public void processReimbursement(Users manager) {
 	
 	int decision = promptSelection(1,2);
 	Status status = (decision == 1)? Status.Approved : Status.Denied;
-	rService.update(reimbursement.ToBeProcessed,manager.getId(), status);
+	rService.update(reimbursement.ToBeProcessed,manager.getID(). status);
 	
 	System.out.println("would you like to process another reimbursement");
 	System.out.println("1 -> yes");
@@ -330,8 +348,8 @@ public void processReimbursement(Users manager) {
 	if (lastChoice == 2) {
 		processPortal = false;
 	}
-	}
-	}
+	
+	
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 

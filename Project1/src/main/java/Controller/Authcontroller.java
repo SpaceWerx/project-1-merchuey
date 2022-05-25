@@ -22,28 +22,29 @@ public class Authcontroller {
 	} catch (Exception e) {
 		ctx.status(HttpCode.INTERNAL_SERVER_ERROR);
 		
-		if(!e.getMessage().IsEmpty()) {
+		if(!e.getMessage().isEmpty()) {
 			ctx.result(e.getMessage());
 		}
 		e.printStackTrace();
 		
 	}
-} 
-} 
+
+ 
 
 
 
 //////////////////////////////////////////////////////////////////////////
-public void handleLogin(context ctx) {
+public void handleLogin(context.ctx) {
 	String username = ctx.fromParam("username");
 	String password = ctx.fromParam("password");
 	
-	if(Objects.equals(username, "") || Objects.equals(password, "")) {
+	if(Objects.equals(username, "") || Objects.equals(password, "")); {
 		
 		ctx.status(HttpCode.BAD_REQUEST);
 		ctx.result("invalid credentials");
-	} else }
-Users users AuthService.login(username,password);
+	} else {
+
+Users users AuthService.login(username,password); {
 
 if(user != null) {
 	ctx.status(HttpCode.ACCEPTED);
@@ -52,14 +53,17 @@ if(user != null) {
 	
 	ctx.header("current-user " + user.getId());
 	
-	ctx result(user.getRole().toString());
-	
-} else {
+	ctx.result(User.getRole().toString());
+
+	} else {
 	ctx.status(HttpCode.BAD_REQUEST);
 	ctx.result("invalid credentials");
-	
 }
-}	
-	}
 
-}
+	
+
+
+
+	
+
+

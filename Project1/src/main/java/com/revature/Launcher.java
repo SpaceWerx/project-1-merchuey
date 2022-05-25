@@ -9,6 +9,7 @@ import io.javalin.Javalin;
 import Utilities.ConnectionFactoryUtility;
 
 public class Launcher {
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Authcontroller authController = new Authcontroller();
 		UserController userController = new UserController();

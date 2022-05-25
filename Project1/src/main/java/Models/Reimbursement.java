@@ -81,5 +81,13 @@ public Reimbursement() {
 	public void setAmount(double d) {
 		Amount = d;
 	}
+	public static int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public static Reimbursement get(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
