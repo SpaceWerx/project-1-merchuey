@@ -1,17 +1,18 @@
 package com.revature;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
-import Controller.Authcontroller;
+
+import Controller.AuthController;
 import Controller.ReimbursementController;
 import Controller.UserController;
 import io.javalin.Javalin;
 import Utilities.ConnectionFactoryUtility;
 
 public class Launcher {
-	@SuppressWarnings("unused")
 	public static void main(String[] args) {
-		Authcontroller authController = new Authcontroller();
+		AuthController authController = new AuthController();
 		UserController userController = new UserController();
 		ReimbursementController reimbursementcontroller = new ReimbursementController();
 		

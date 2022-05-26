@@ -11,29 +11,30 @@ public class AuthService {
 	}
 ///////////////////////////////////////////////////////////////////////////////////////
 	
-	public static Users login(String username, String password) {
-		Users users;
+	public static int login(String username, String password) {
+		
 		
 		try {
-			users = UserDAO.getByUsername(username);
+			Users users = UserDAO.getByUsername(username);
 			
 			if(users!=null && password.equals(users.getPassword())) {
 				
 		System.out.println("succssessful login");
-		return users;
+		return 1;
 			} else if (users!= null && !password.equals(users.getPassword())) {
 				
 				System.out.println("wrong password");
-				return null;
+				return 2;
 			} else {
 		System.out.println("user does not exist");
+		
 			}
 	
 		} catch (Exception e) {
 			System.out.println("unsuccessful login");
 			e.printStackTrace();
 	}
-return null; 
+return 0; 
 	}
 		
 

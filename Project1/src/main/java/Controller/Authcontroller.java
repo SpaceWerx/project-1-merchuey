@@ -1,81 +1,66 @@
 package Controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+
 import io.javalin.http.Context;
+import io.javalin.http.Handler;
 import io.javalin.http.HttpCode;
 import Models.Users;
 import Service.AuthService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-public class Authcontroller {}
-/*ObjectMapper Mapper = new ObjectMapper();
-public void handlerRegister(Context ctx) {
-
-	try {
-		String input = ctx.body();
-		
-		Users users = Mapper.readValue(input, Users.class);
-		int Id = AuthService.register(users);
-		if(Id == 0) {
-			
-			ctx.status(HttpCode.INTERNAL_SERVER_ERROR);
-			ctx.result("registration unsuccessfull");
-		}
-	} catch (Exception e) {
-		ctx.status(HttpCode.INTERNAL_SERVER_ERROR);
-		
-		if(!e.getMessage().isEmpty()) {
-			ctx.result(e.getMessage());
-		}
-		e.printStackTrace(); 
-		
-	}
-} */
 
 
+public class AuthController {
 
+	ObjectMapper Mapper = new ObjectMapper();
+    public void handleRegister(Context ctx) {
 
+        try {
 
+            String input = ctx.body();
 
- 
+            Users users = Mapper.readValue(input, Users.class);
 
+            int id = AuthService.register(users);
 
+            if(id == 0) {
 
-//////////////////////////////////////////////////////////////////////////
+                ctx.status(HttpCode.INTERNAL_SERVER_ERROR);
+                ctx.result("Registration unsuccessful.");
+            }
 
-public void handleLogin(context.ctx) {
-	String username = ctx.fromParam("username");
-	String password = ctx.fromParam("password");
-	
-	if(Objects.equals(username, "") || Objects.equals(password, "")); {
-		
-		ctx.status(HttpCode.BAD_REQUEST);
-		ctx.result("invalid credentials");
-	} else {
+        } catch (Exception e) {
 
-Users users; AuthService.login(username,password); {
+            ctx.status(HttpCode.INTERNAL_SERVER_ERROR);
 
-if(user != null) {
-	ctx.status(HttpCode.ACCEPTED);
-	
-	ctx.header("access-controll-expose-headers", "current-user");
-	
-	ctx.header("current-user " + user.getId());
-	
-	ctx.result(User.getRole().toString());
+            if(!e.getMessage().isEmpty()) {
+                ctx.result(e.getMessage());
+            }
 
-	} else {
-	ctx.status(HttpCode.BAD_REQUEST);
-	ctx.result("invalid credentials");
-	}
+            e.printStackTrace();
+        }
+
+    }
+    AuthService as = new AuthService();
+    
+    public Handler loginHandler = (ctx) -> {
+        String body = ctx.body();
+
+        Gson gson = new Gson();
+        //I recommend you make this an employee object 
+        Users u = gson.fromJson(body, Users.class);
+
+        if(as.login(u.getUsername(), u.getPassword()) == 1) {
+            ctx.status(201);
+            ctx.result("Manager Login Sucessful!");
+        }
+        else if(as.login(u.getUsername(), u.getPassword()) == 2) {
+            ctx.status(202);
+            ctx.result("Employee Login Sucessful!");
+        }
+        else {
+        ctx.result("Login Failed!");
+        ctx.status(401);
+        }
+    };
 }
-	}
-}
-
-
-	
-
-
-
-	
-
-
