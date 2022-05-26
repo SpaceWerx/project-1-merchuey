@@ -291,22 +291,22 @@ public void displayPendingReimbursements() {
 		System.out.println("returing to previous menu");
 	}
 	
-	Reimbursement[] resolvedReimbursements;
-	for (Reimbursement r : resolvedReimbursements) {
+	
+	for (Reimbursement r : pendingReimbursements) {
 		System.out.println(r);
 	}
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 public void processReimbursement(Users manager) {
-	boolean proecssPortal;
+
 	boolean processPortal = true;
 	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	System.out.println("welcome to the processing portal");
 	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	System.out.println();
 	
-	while (proecssPortal) {
+	while (processPortal) {
 		List<Reimbursement> reimbursements = rService.getPendingReimbursements();
 		
 		if(reimbursements.isEmpty()) {
@@ -314,25 +314,33 @@ public void processReimbursement(Users manager) {
 			System.out.println("returing to previous menu");
 			return;	
 		}
-	}
-}
 		
-		int[] ids = new int[Reimbursement.size()]; {
+		int[] ids = new int[Reimbursement.size()]; 
 		for (int i = 0;i<Reimbursement.size(); i++) {
 			Reimbursement r = Reimbursement.get(i);
-			Users author = User_Services.getUserbyId(r.getAuthor());
+			Users author = userservices.getUserbyId(r.getAuthor());
 			System.out.println(r.getID() + "->" + author.getUsername() + " $ " + r.getAmount());
 			ids[i] = r.getID();	
 		}
-		}
+		
 		
 	System.out.println("please enter the ID of the reimbursement you would like to process");
 	
-	int selection = promptSelection(ids);
+	/*int selection = promptSelection(ids);
 	Reimbursement reimbursementToBeProcessed = rService.getReimbursementById(selection);
-	System.out.println("proessing reimbursement" + reimbursementToBeProcessed.getId());
-	System.out.println("Details\nAuthor: " + reimbursementToBeProcessed.getAuthor()).getUsername() + "\nAmount: "
-	+ reimbursementToBeProcessed.getAmount() + "n\Description: " + reimbursementToBeProcessed.getDescription());
+	System.out.println("proessing reimbursement" + reimbursementToBeProcessed.getID());
+	System.out.println("Details\nAuthor: " + userservices.getUserbyId(reimbursementToBeProcessed.getAuthor()).getUsername()
+			+ "\nAmount: "
+	+ reimbursementToBeProcessed.getAmount() + "n\Description: " + reimbursementToBeProcessed.getDescription());*/
+	
+	int selection = promptSelection(ids);
+    Reimbursement reimbursementToBeProcessed = rService.getReimbursementById(selection);
+    System.out.println("Processing reimbursement #" + reimbursementToBeProcessed.getID());
+    System.out.println("Details\nAuthor: "
+            + userservices.getUserbyId(reimbursementToBeProcessed.getAuthor()).getUsername()
+            + "\nAmount: " + reimbursementToBeProcessed.getAmount()
+            + "\nDescription: " + reimbursementToBeProcessed.getDescription()
+    );
 	
 	System.out.println("enter number of choice please");
 	System.out.println("1 -> approve");
@@ -340,7 +348,7 @@ public void processReimbursement(Users manager) {
 	
 	int decision = promptSelection(1,2);
 	Status status = (decision == 1)? Status.Approved : Status.Denied;
-	rService.update(reimbursement.ToBeProcessed,manager.getID().status);
+	rService.update(reimbursementToBeProcessed,manager.getId(),status);
 	
 	System.out.println("would you like to process another reimbursement");
 	System.out.println("1 -> yes");
@@ -349,7 +357,9 @@ public void processReimbursement(Users manager) {
 	
 	int lastChoice = promptSelection(1,2);
 	if (lastChoice == 2) {
-		processPortal = false;
+		processPortal = false; 
+		} 
+		}
 	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -370,33 +380,15 @@ public void displayLoginMenu() {
 		String password = scan.nextLine();
 		if(au.login(username, password)!= null) {
 			accountFound = true;
-			displayMenu();
+			DisplayMenu();
 			break;
 		} else {
 			System.out.println("account not found. please try again");
 		}	
 	}	
-}
+
+} }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-public void displayMenu() {
-	AuthService au = new AuthService();
-	
-	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-	System.out.println("welcome to the registration portal");
-	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-	System.out.println();
-	
-	Users usersToBeRegistered = new Users();
-	System.out.println("enter username please");
-	String username = scan.nextLine();
-	System.out.println("enter password please");
-	String password = scan.nextLine();
-	userToBeRegistered.setUsername(username);
-	userToBeRegistered.setPassword(password);
-	userToBeRegistered.setRoles(Roles.Employee);
-	au.register(userToBeRegistered);
-	displayLoginMenu
-}
-}
+
  

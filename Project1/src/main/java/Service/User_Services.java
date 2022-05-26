@@ -38,21 +38,22 @@ public void UserExistsById(int id) {
 
 public List<Users>getUserByRole(Roles roles){
 	List<Users>byRoles = new ArrayList<>();
-	for(Users users : UserDAO.getAllUsers()) {
+	for(Users users : userDAO.getAllUsers()) {
+		if(users.getRole()==roles) {
 		byRoles.add(users);
 	}
 }
 return byRoles;
-
+}
 ////////////////////////////////////////////////////////////////////////////
 
 public Users getUserbyId(int id) {
-	return UserDAO.getUserbyId(id);
+	return userDAO.getUserbyId(id);
 }
 ///////////////////////////////////////////////////////////////////////////
 public void addUser(Users newEmployee) throws SQLException {
 	
-	UserDAO.create(newEmployee);
+	userDAO.create(newEmployee);
 }
 public boolean checkUserExistsById(int id) {
 	return false;

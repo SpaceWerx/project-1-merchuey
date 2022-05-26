@@ -7,7 +7,7 @@ public class AuthService {
 	public static int register (Users usersToBeRegistered) {
 	if(UserDAO.getByUsername(usersToBeRegistered.getUsername())!=null) {
 		throw new NullPointerException("username is already taken"); }
-	//return 0; ////$#!@
+	return UserDAO.create(usersToBeRegistered); 
 	}
 ///////////////////////////////////////////////////////////////////////////////////////
 	

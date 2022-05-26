@@ -1,19 +1,20 @@
 package Controller;
 
-import java.util.Objects;
 import io.javalin.http.Context;
 import io.javalin.http.HttpCode;
 import Models.Users;
 import Service.AuthService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class Authcontroller {
+public class Authcontroller {}
+/*ObjectMapper Mapper = new ObjectMapper();
+public void handlerRegister(Context ctx) {
 
 	try {
 		String input = ctx.body();
 		
-		ObjectMapper mapper = new ObjectMapper ();
-		Users users = mapper.readValue(input, Users.class);
-		
+		Users users = Mapper.readValue(input, Users.class);
+		int Id = AuthService.register(users);
 		if(Id == 0) {
 			
 			ctx.status(HttpCode.INTERNAL_SERVER_ERROR);
@@ -25,10 +26,11 @@ public class Authcontroller {
 		if(!e.getMessage().isEmpty()) {
 			ctx.result(e.getMessage());
 		}
-		e.printStackTrace(); {
-		}
+		e.printStackTrace(); 
+		
 	}
-}
+} */
+
 
 
 
