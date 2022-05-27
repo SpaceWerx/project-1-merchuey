@@ -32,7 +32,7 @@ public class UserController {
 		Gson gson = new Gson();
 		
 		Users employee = gson.fromJson(body, Users.class);
-		
+		System.out.println(employee.getUsername());
 		us.addUser(employee);
 		
 		ctx.result("Employee successfully added!");

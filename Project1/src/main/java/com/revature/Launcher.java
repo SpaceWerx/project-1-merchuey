@@ -33,6 +33,21 @@ public class Launcher {
 		app.get("/employee", userController.getEmployeesHandler);
 		
 		app.post("/employee", userController.insertEmployeesHandler);
+		
+		app.post("/login", authController.loginHandler);
+		
+		app.get("/status", reimbursementcontroller.handleGetReimbursmentByStatus);
+		
+		app.get("/reimbursements", reimbursementcontroller.handleGetReimbursementById);
+		
+		app.post("/submit", reimbursementcontroller.handleSubmit);
+		
+		app.put("/processed", reimbursementcontroller.handleProcessed);
+		
+		app.get("/author/{author}", reimbursementcontroller.handleGetReimbursementByAuthor);
+		
+		app.get("reimbursements/{Id}", reimbursementcontroller.handleGetReimbursements);
+		
 	}
 
 }

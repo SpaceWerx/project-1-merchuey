@@ -1,6 +1,7 @@
 package Service;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 import DAO.UserDAO;
@@ -47,13 +48,13 @@ return byRoles;
 }
 ////////////////////////////////////////////////////////////////////////////
 
-public Users getUserbyId(int id) {
-	return userDAO.getUserbyId(id);
+public Users getUserbyId(int Id) {
+	return userDAO.getUserbyId(Id);
 }
 ///////////////////////////////////////////////////////////////////////////
 public void addUser(Users newEmployee) throws SQLException {
 	
-	userDAO.create(newEmployee);
+	UserDAO.create(newEmployee);
 }
 public boolean checkUserExistsById(int id) {
 	return false;

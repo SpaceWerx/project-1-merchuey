@@ -75,7 +75,7 @@ try(Connection connection = ConnectionFactoryUtility.getConnection()){
 try(Connection connection = ConnectionFactoryUtility.getConnection()){
 			
 			String sql = "INSERT INTO ers_users (id, username, password, role)"
-					+ "VALUES (?, ?, ?::role)"
+					+ "VALUES (?, ?, ?, ?::role)"
 					+ "RETURNING ers_users.id";
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
