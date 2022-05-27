@@ -40,7 +40,7 @@ public class Launcher {
 		
 		app.get("/status", reimbursementcontroller.handleGetReimbursmentByStatus);
 		
-		app.get("/reimbursements", reimbursementcontroller.handleGetReimbursementById);
+		app.get("/reimbursements/{Id}", reimbursementcontroller.handleGetReimbursementById);
 		
 		app.post("/submit", reimbursementcontroller.handleSubmit);
 		
@@ -48,7 +48,7 @@ public class Launcher {
 		
 		app.get("/author/{author}", reimbursementcontroller.handleGetReimbursementByAuthor);
 		
-		app.get("reimbursements/{Id}", reimbursementcontroller.handleGetReimbursements);
+		app.get("reimbursements", reimbursementcontroller.handleGetReimbursements);
 		
 	}
 
