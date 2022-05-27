@@ -10,12 +10,15 @@ import Controller.ReimbursementController;
 import Controller.UserController;
 import io.javalin.Javalin;
 import Utilities.ConnectionFactoryUtility;
+import Service.CLI_Menu;
 
 public class Launcher {
 	public static void main(String[] args) {
 		AuthController authController = new AuthController();
 		UserController userController = new UserController();
 		ReimbursementController reimbursementcontroller = new ReimbursementController();
+		//CLI_Menu options = new CLI_Menu();
+	    //options.displayLoginMenu();
 		
 		try (Connection conn = ConnectionFactoryUtility.getConnection()) {
 			System.out.println("connection successful");

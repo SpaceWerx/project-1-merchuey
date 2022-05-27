@@ -14,7 +14,7 @@ public class CLI_Menu {
 	
 	static Scanner scan = new Scanner(System.in);
 	public static String fetchInput() {
-		return scan.nextLine().split(".")[0];		
+		return scan.nextLine().split(" ")[0];		
 	}
 	
 	public static int promptSelection(int ...validEntries) {
@@ -348,7 +348,7 @@ public void processReimbursement(Users manager) {
 	
 	int decision = promptSelection(1,2);
 	Status status = (decision == 1)? Status.Approved : Status.Denied;
-	rService.update(reimbursementToBeProcessed,manager.getId(),status);
+	rService.update(reimbursementToBeProcessed);
 	
 	System.out.println("would you like to process another reimbursement");
 	System.out.println("1 -> yes");

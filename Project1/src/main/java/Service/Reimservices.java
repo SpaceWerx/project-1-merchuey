@@ -11,30 +11,17 @@ import Models.Roles;
 
 public class Reimservices {
 
-			public ReimbursementDAO reimbursementDAO = new ReimbursementDAO();
-			public User_Services rService = new User_Services();
+			public static ReimbursementDAO reimbursementDAO = new ReimbursementDAO();
+			public static User_Services rService = new User_Services();
 			public static ArrayList<Reimbursement> reimbursements = new ArrayList<>();	
 			public static void clearData() {	
 				reimbursements.clear();
 			}
 
-	public Reimbursement update(Reimbursement unprocessedReimbursement, int resolverId, Status updatedStatus) {	
 
-			Users manager = rService.getUserbyId(resolverId);
-			
-			if(manager.getRole() != Roles.Manager) {
-				throw new RuntimeException("There was an error processing this reimbursement, please try again.");
-			}else {
-				
-				unprocessedReimbursement.setResolver(resolverId);
-				unprocessedReimbursement.setStatus(updatedStatus);
-				
-				reimbursementDAO.update(unprocessedReimbursement);
-				
-				return unprocessedReimbursement;
-			}
-			
-	}
+		
+		
+	
 		
 		
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -65,22 +52,19 @@ public class Reimservices {
 		
 	/////////////////////////////////////////////////////////////////////////////		
 			
-		public int submitReimbursement (Reimbursement reimbursementToBeSubmitted) {
+		public static int submitReimbursement (Reimbursement reimbursementToBeSubmitted) {
 			
 
 		
 			Users employee = rService.getUserbyId(reimbursementToBeSubmitted.getAuthor());
 		
-			if(employee.getRole() != Roles.Employee) {
-				
-				throw new IllegalArgumentException("Managers cannot submit reimbursement requests.");
-			} else {
+			
 				reimbursementToBeSubmitted.setStatus(Status.Pending);
 				
 		
 				return reimbursementDAO.create(reimbursementToBeSubmitted);
 		}
-	}
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		public List<Reimbursement> getReimbursementsByAuthor(int userId) {
@@ -114,7 +98,7 @@ public class Reimservices {
 	////////////////////////////////////////
 	public Reimbursement getReimbursementById(int id) {return ReimbursementDAO.getReimbursementById(id);}
 		
-	public List<Reimbursement> getReimbursementByAuthor(int userId) {
+	public static List<Reimbursement> getReimbursementByAuthor(int userId) {
 		return reimbursementDAO.getReimbursementsByUser(userId);
 	}
 
@@ -128,16 +112,17 @@ public class Reimservices {
 		this.rService = userService;
 	}
 
-	public Reimbursement update(Reimbursement reimbursement, int userId, javax.net.ssl.SSLEngineResult.Status valueOf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public static Reimbursement update(Reimbursement unprocessedReimbursement) {
 
-	public static Reimbursement update(Reimbursement reimbursement) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-		
+        reimbursementDAO.update(unprocessedReimbursement);
+
+        return unprocessedReimbursement;
+}
+
+	
+	public List<Reimbursement> getReimbursementByStatus(Status status){
+        return reimbursementDAO.getByStatus(status);
+}
 		}
 /////////////////////////////////////////////////////////////////////////////////////////
 
