@@ -14,7 +14,7 @@ import Service.AuthService;
 public class AuthController {
 
 	ObjectMapper Mapper = new ObjectMapper();
-    public void handleRegister(Context ctx) {
+    public Handler handleRegister = (ctx) -> {
 
         try {
 
@@ -41,7 +41,7 @@ public class AuthController {
             e.printStackTrace();
         }
 
-    }
+    };
     AuthService as = new AuthService();
     
     public Handler loginHandler = (ctx) -> {

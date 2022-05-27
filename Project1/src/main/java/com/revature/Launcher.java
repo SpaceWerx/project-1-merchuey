@@ -36,6 +36,8 @@ public class Launcher {
 		
 		app.post("/login", authController.loginHandler);
 		
+		app.post("/register", authController.handleRegister);
+		
 		app.get("/status", reimbursementcontroller.handleGetReimbursmentByStatus);
 		
 		app.get("/reimbursements", reimbursementcontroller.handleGetReimbursementById);
