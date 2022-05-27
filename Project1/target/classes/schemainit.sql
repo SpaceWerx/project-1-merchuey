@@ -28,8 +28,7 @@ CREATE TABLE ers_reimbursements (
         FOREIGN KEY (resolver)
             REFERENCES ers_users(id)
 );
-INSERT INTO ers_users (USERNAME, PASSWORD, ROLE)
-VALUES('GEST', 'GUEST', 'Employee'),('GENERICUSER1', 'GENERICPASS', 'Employee'),('GENERICUSER2', 'GENERICPASS', 'Employee'),('GENERICUSER3', 'GENERICPASS', 'Employee'),('GENERICMANAGER1', 'GENERICPASS', 'Manager'),('GENERICMANAGER2', 'GENERICPASS', 'Manager'),('GENERICMANAGER3', 'GENERICPASS', 'Manager');
+INSERT INTO ers_users (USERNAME, PASSWORD, ROLE)VALUES('GEST', 'GUEST', 'Employee'),('GENERICUSER1', 'GENERICPASS', 'Employee'),('GENERICUSER2', 'GENERICPASS', 'Employee'),('GENERICUSER3', 'GENERICPASS', 'Employee'),('GENERICMANAGER1', 'GENERICPASS', 'Manager'),('GENERICMANAGER2', 'GENERICPASS', 'Manager'),('GENERICMANAGER3', 'GENERICPASS', 'Manager');
 INSERT INTO ers_reimbursements (author, resolver, description, "type" ,"status" , amount)
 
 SELECT * FROM ers_users;
